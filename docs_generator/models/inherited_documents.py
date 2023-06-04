@@ -133,6 +133,6 @@ class documents_document(models.Model):
                     'folder_id': 24,
                     'activity_type_id': 10,
                     'tag_ids': [year_labels[year], month_labels[month], 100],
-                    'name': 'Pago' + contacto.name,
+                    'name': 'Pago ' + contacto.name,
                     'partner_id': contacto.id
                 })
