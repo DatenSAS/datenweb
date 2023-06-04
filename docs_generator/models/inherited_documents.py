@@ -32,12 +32,12 @@ class documents_document(models.Model):
             '2025': 67,
         }
 
-        contactos = self.env['res.partner'].search([('category_id','in',[2,5,3,4,6])])
+        contactos = self.env['res.partner'].search([('category_id','!=',False)])
         month = str(date.today().month)
         year = str(date.today().year)
 
         for contacto in contactos:
-            if contacto.category_id.id == 2:
+            if 2 in contacto.category_id.ids:
                 self.env['documents.document'].create({
                     'folder_id': 23,
                     'activity_type_id': 10,
@@ -45,7 +45,7 @@ class documents_document(models.Model):
                     'name':'DS - ' + contacto.name,
                     'partner_id': contacto.id
                 })
-            elif contacto.category_id.id == 5:
+            elif 5 in contacto.category_id.ids:
                 self.env['documents.document'].create({
                     'folder_id': 23,
                     'activity_type_id': 10,
@@ -53,7 +53,7 @@ class documents_document(models.Model):
                     'name': 'Extracto Bancario',
                     'partner_id': contacto.id
                 })
-            elif contacto.category_id.id == 3:
+            elif 3 in contacto.category_id.ids:
                 self.env['documents.document'].create({
                     'folder_id': 23,
                     'activity_type_id': 10,
@@ -61,7 +61,7 @@ class documents_document(models.Model):
                     'name': 'FE Cliente - ' + contacto.name,
                     'partner_id': contacto.id
                 })
-            elif contacto.category_id.id == 4:
+            elif 4 in contacto.category_id.ids:
                 self.env['documents.document'].create({
                     'folder_id': 23,
                     'activity_type_id': 10,
@@ -69,7 +69,7 @@ class documents_document(models.Model):
                     'name': 'FE Proveedor - ' + contacto.name,
                     'partner_id': contacto.id
                 })
-            elif contacto.category_id.id == 6:
+            elif 6 in contacto.category_id.ids:
                 self.env['documents.document'].create({
                     'folder_id': 23,
                     'activity_type_id': 10,
