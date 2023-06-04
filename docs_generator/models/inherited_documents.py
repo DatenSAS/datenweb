@@ -91,3 +91,48 @@ class documents_document(models.Model):
                     'name': 'DIAN Declaración Renta',
                     'partner_id': contacto.id
                 })
+
+    def generar_documento_personal(self):
+
+        month_labels = {
+            '1': 84,
+            '2': 85,
+            '3': 86,
+            '4': 87,
+            '5': 88,
+            '6': 89,
+            '7': 90,
+            '8': 91,
+            '9': 92,
+            '10': 93,
+            '11': 94,
+            '12': 95,
+        }
+
+        year_labels = {
+            '2023': 96,
+            '2024': 97,
+            '2025': 98,
+        }
+
+        contactos = self.env['res.partner'].search([('category_id','!=',False)])
+        month = str(date.today().month)
+        year = str(date.today().year)
+
+        for contacto in contactos:
+            if 7 in contacto.category_id.ids:
+                self.env['documents.document'].create({
+                    'folder_id': 24,
+                    'activity_type_id': 10,
+                    'tag_ids':[year_labels[year], month_labels[month], 100],
+                    'name':'Pago TC ' + contacto.name,
+                    'partner_id': contacto.id
+                })
+            elif 8 in contacto.category_id.ids:
+                self.env['documents.document'].create({
+                    'folder_id': 24,
+                    'activity_type_id': 10,
+                    'tag_ids': [year_labels[year], month_labels[month], 100],
+                    'name': 'Pago' + contacto.name,
+                    'partner_id': contacto.id
+                })
