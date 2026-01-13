@@ -30,6 +30,11 @@ class documents_document(models.Model):
             '2023': 65,
             '2024': 66,
             '2025': 67,
+            '2026': 126,
+            '2027': 127,
+            '2028': 128,
+            '2029': 129,
+            '2030': 130,
         }
 
         contactos = self.env['res.partner'].search([('category_id','!=',False)])
@@ -113,6 +118,11 @@ class documents_document(models.Model):
             '2023': 96,
             '2024': 97,
             '2025': 98,
+            '2026': 131,
+            '2027': 132,
+            '2028': 133,
+            '2029': 134,
+            '2030': 135,
         }
 
         contactos = self.env['res.partner'].search([('category_id','!=',False)])
