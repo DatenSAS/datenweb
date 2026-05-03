@@ -5,6 +5,8 @@ from datetime import date
 import logging
 _logger = logging.getLogger(__name__)
 
+# This is a test
+
 class documents_document(models.Model):
 
     _inherit = 'documents.document'
